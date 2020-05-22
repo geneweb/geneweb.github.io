@@ -6,6 +6,10 @@ pour écrire un premier template. Il s'agira d'une page, intégrée dans une
 page "squelette", qui affichera le *prénom.occ nom* d'une personne,
 ainsi que ceux de ses parents et enfants.
 
+NB: à cause du moteur utilisé par github pour générer le HTML,
+j'ai du ajouter `{ % raw % }` et `{ % endraw % }` au début et à la fin
+des blocs de code. Si vous lisez la version brute de cette page, ignorez-les.
+
 ## Le squelette
 
 Nous allons commencer par écrire une page qui définie la structure globale
@@ -13,6 +17,7 @@ de nos pages
 
 `'SANDBOX_skeleton.html.jingoo'`
 ```jinja2
+{% raw %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,10 +29,11 @@ de nos pages
     {% block body %}<!-- page content -->{% endblock %}
   </body>
 </html>
+{% endraw %}
 ```
 
 Il s'agit de la structure que partageront toutes nos pages.
-La personnalisation de la page se fera grâce aux balises `{% block %}`.
+La personnalisation de la page se fera grâce aux balises `{% raw %}{% block %}{% endraw %}`.
 Voyons cela avec le prochain template.
 
 ### Étendre une page
@@ -35,27 +41,34 @@ Voyons cela avec le prochain template.
 Écrivons maintenant notre page qui hérite de cette structure de base
 
 ```jinja2
+{% raw %}
 {% extends 'SANDBOX_skeleton.html.jingoo' %}
+{% endraw %}
 ```
 
-La balise `{% extends %}` permet d'integrer notre page à l'intérieur
-d'un template parent.
+La balise `{% raw %}{% extends %}{% endraw %}` permet d'integrer notre
+page à l'intérieur d'un template parent.
+
 `SANDBOX.html.jingoo`
 
 ```jinja2
+{% raw %}
 {% extends 'SANDBOX_skeleton.html.jingoo' %}
 {% block title %}GeneWeb's SANDBOX page{% endblock %}
+{% endraw %}
 ```
 
 Lorsque l'on défini un block qui existe également dans le template
 parent, le contenur de ce dernier est remplacé par le contenu de celui
 que nous redéfinissons dans le template qui hérite de ce parent.
 
-Si vous ne redéfinissez pas un block, le contenu du block parent
-sera utilisé. Ici, si nous ne redéfinissons pas `{% block tile %}`,
-le titre de notre page sera donc `Default title page`.
+Si vous ne redéfinissez pas un block, le contenu du block parent sera
+utilisé. Ici, si nous ne redéfinissons pas
+`{% raw %}{% block tile%}{% endraw %}`, le titre de notre page sera
+donc `Default title page`.
 
 ```jinja2
+{% raw %}
 {% extends 'SANDBOX_skeleton.html.jingoo' %}
 {% block title %}GeneWeb's SANDBOX page{% endblock %}
 {% block body %}
@@ -66,6 +79,7 @@ le titre de notre page sera donc `Default title page`.
     </form>
   {% endif %}
 {% endblock %}
+{% endraw %}
 ```
 
 Ici, les choses deviennent un peu plus intéressante. Dans le block `body`,
@@ -75,8 +89,8 @@ Si ce n'est pas le cas, un formulaire est utilisé pour recharger la même
 page, avec un `i` défini par l'utilisateur. `i` représente l'identifiant
 d'une personne, comme lorsque vous affichez le formulaire d'édition.
 
-
 ```jinja2
+{% raw %}
 {% extends 'SANDBOX_skeleton.html.jingoo' %}
 {% block title %}GeneWeb's SANDBOX page{% endblock %}
 {% block body %}
@@ -90,17 +104,19 @@ d'une personne, comme lorsque vous affichez le formulaire d'édition.
     {% include 'SANDBOX_person.html.jingoo' %}
   {% endif %}
 {% endblock %}
+{% endraw %}
 ```
 
 Si `i` est défini, alors on récupère la personne correspondant à cet
 identifiant, et on l'assigne à la variable `person`, grâce à
-`{% set person = GWDB.poi (conf.env.i) %}`.
+`{% raw%}{% set person = GWDB.poi (conf.env.i) %}{% endraw %}`.
 
-Une fois cette variable défini, nous pouvons inclure un morceau de page,
-qui s'attend à se que `person` soit défini avant d'être appelé grâce à
-`{% include 'SANDBOX_person.html.jingoo' %}`. Comme son nom l'indique
-assez bien, cette instruction se charge en faite de copier le contenu
-de `SANDBOX_person.html.jingoo`, et de le coller ici.
+Une fois cette variable défini, nous pouvons inclure un morceau de
+page, qui s'attend à se que `person` soit défini avant d'être appelé
+grâce à `{% raw %}{% include 'SANDBOX_person.html.jingoo' %}{% endraw%}`.
+Comme son nom l'indique assez bien, cette instruction se charge
+en faite de copier le contenu de `SANDBOX_person.html.jingoo`, et de
+le coller ici.
 
 ### Les macros, l'utilisation du lexicon
 
@@ -110,9 +126,11 @@ La première chose que nous ferons est d'afficher le *prénom.occ nom*
 de la personne dont on veut afficher la page.
 
 ```jinja2
+{% raw %}
 {# This page expects that `person` is defined in the context. #}
 
 <h1>{{ person.first_name }}.{{ person.occ }} {{ person.surname }}</h1>
+{% endraw %}
 ```
 
 ![prénom.occ nom en guise h1](img/screenshot1.png)
@@ -121,6 +139,7 @@ Ensuite, affichons aussi ses parents. Afin de nous faciliter la tâche,
 nous allons définir une macro `fos` pour afficher les infos d'une personne.
 
 ```jinja2
+{% raw %}
 {# This page expects that `person` is defined in the context. #}
 
 {% macro fos (p) %}
@@ -139,6 +158,7 @@ nous allons définir une macro `fos` pour afficher les infos d'une personne.
 {% else %}
   <p>{{ 'missing ancestors' | trans | capitalize }}</p>
 {% endif %}
+{% endraw %}
 ```
 
 ![Avec les informations sur les parents](img/screenshot2.png)
@@ -151,6 +171,7 @@ nous allons définir une autre macro, qui appelera la première mais qui
 ajoutera un lien vers la page adéquate.
 
 ```jinja2
+{% raw %}
 {# This page expects that `person` is defined in the context. #}
 
 {% macro fos (p) %}
@@ -173,6 +194,7 @@ ajoutera un lien vers la page adéquate.
 {% else %}
   <p>{{ 'missing ancestors' | trans | capitalize }}</p>
 {% endif %}
+{% endraw %}
 ```
 ![Avec des liens](img/screenshot3.png)
 
@@ -180,9 +202,10 @@ ajoutera un lien vers la page adéquate.
 
 Maintenant, affichons ses enfant, si la personne en a. Le champ
 `person.children` est une liste, sur laquelle nous pouvons itérer grâce
-à l'instruction `{% for ... in ... %}`
+à l'instruction `{% raw %}{% for ... in ... %}{% endraw %}`
 
 ```jinja2
+{% raw %}
 {# This page expects that `person` is defined in the context. #}
 
 {% macro fos (p) %}
@@ -214,6 +237,7 @@ Maintenant, affichons ses enfant, si la personne en a. Le champ
     {% endfor %}
   </ul>
 {% endif %}
+{% endraw %}
 ```
 
 ![Et les informations sur les enfants](img/screenshot4.png)
