@@ -264,4 +264,4 @@ transposer sans modification sur jingoo.
 
 Enfin, pour savoir ce qu'offre l'environnement et les structures de données
 offert par GeneWeb, allez jeter un oeil sur la documentation de la
-sous-bibliothèque [gwxjg](https://github.com/geneweb/geneweb/tree/merge-gnt-2/lib/gwxjg/README.MD).
+sous-bibliothèque [gwxjg](https://github.com/geneweb/geneweb/blob/master/lib/gwxjg/README.MD).
