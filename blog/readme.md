@@ -2,6 +2,9 @@
 
 ## POSTS
 
+[Écrire un template avec jingoo](/blog/posts/fr/2020-05-22-tuto-templates-jingoo/) -
+_Mini tutoriel afin de se lancer dans l'écriture de templates jingoo pour GeneWeb._
+
 [Détection des lieux -
 Implémentation](/blog/posts/fr/2019-07-27-detection-des-lieux-implementation/) -
 _Détails techniques d'un module capable de regrouper les lieux par
