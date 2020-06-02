@@ -103,18 +103,19 @@ le nouvel index est donc `41`.
 J'ai fais quelques essais sur des bases collaboratives de Geneanet:
 
 - genea50com :
-  140 personnes, 29785 familles et 69666 chaînes supprimées.
-  genea50com.gwb/base : 206M -> 194M (-6%)
+  - 140 personnes, 29785 familles et 69666 chaînes supprimées.
+  - `genea50com.gwb/base` : 206M -> 194M (-6%)
 - pierfit :
-  pierfit.gwb/base : 400M -> 353M (-11%)
+  - 3387 personnes, 22838 familles et 209406 chaînes supprimées.
+  - `pierfit.gwb/base` : 400M -> 353M (-11%)
 - sanchiz :
-  180 personnes, 7541 familles et 48865 chaînes supprimées.
-  sanchiz.gwb/base : 155M -> 151M (-3%)
+  - 180 personnes, 7541 familles et 48865 chaînes supprimées.
+  - `sanchiz.gwb/base` : 155M -> 151M (-3%)
 - wikifrat :
-  4 personnes, 846 familles et 47038 chaînes supprimées.
-  wikifrat.gwb/base : 234M -> 104M (-51%)
+  - 4 personnes, 846 familles et 47038 chaînes supprimées.
+  - `wikifrat.gwb/base` : 234M -> 104M (-51%)
 
-L'index strings.inx se retrouve aussi du coup bien allegé par ce passage.
+L'index `strings.inx` se retrouve aussi bien allegé par ce ramasse-miettes.
 
 ## Et ça ne casse rien ?
 
