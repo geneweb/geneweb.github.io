@@ -97,9 +97,13 @@ c'est très simple. On commence par identifier :
 - les chaînes de caractère à supprimer : celles qui ne sont
   référencées nulle part.
 
-Pour se faire, nous allons parcourir les tableaux de données, et
-marquer les données à conserver. Les éléments qui ne sont pas marqués
-sont donc ceux à supprimer.
+Pour se faire, nous allons parcourir les tableaux des personnes et
+des familles données. Si la case contient des informations, on la marque
+comme "à conserver", et on marque également les cases qu'elle références
+(par exemple le nom, le prénom, les parents, ...) comme "à conserver"
+également.
+
+À la fin du parcour, les cases qui ne sont pas marquées sont donc celles à supprimer.
 
 Ensuite, on crée un nouvelle base, avec des tableaux de longueur
 `taille initiale - données à supprimer`, et on les remplis avec les
@@ -115,8 +119,6 @@ Tableau des noms après ramasse-miettes [ "DUPOND" | "DUPO" ]
 Personne avant ramasse miette  { nom = 3 ; prenom = ... }
 Personne après ramasse miette  { nom = 1 ; prenom = ... }
 ```
-
-
 
 ## Et alors, ça donne quoi ?
 
