@@ -112,8 +112,8 @@ Exemple :
 Tableau des noms avant ramasse-miettes [ "AZERTY" | "ZORG" | "DUPOND" | "DUPO" ]
 Tableau des noms après ramasse-miettes [ "DUPOND" | "DUPO" ]
 
-Personne avant ramasse miette  [ { nom = 3 ; prenom = ... } ]
-Personne après ramasse miette  [ { nom = 1 ; prenom = ... } ]
+Personne avant ramasse miette  { nom = 3 ; prenom = ... }
+Personne après ramasse miette  { nom = 1 ; prenom = ... }
 ```
 
 
