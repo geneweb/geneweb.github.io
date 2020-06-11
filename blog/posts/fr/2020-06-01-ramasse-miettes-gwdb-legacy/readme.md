@@ -19,7 +19,7 @@ Lorsque l'on enregistre le nom d'une personne, ce qui va etre enregistré dans l
 personne, c'est en fait l'emplacement dans le tableau ou se situe la
 valeur (chaîne de caractères) que l'on vient de renseigner.
 
-Les chaînes de caractères est donc stockée dans un tableau à part. Cela permet
+Les chaînes de caractères sont stockées dans un tableau à part. Cela permet
 de gagner espace de stockage car un même nom sera juste un même nombre, et la
 vraie valeur ne sera stockée qu'une fois. Cela permet aussi une comparaison
 beaucoup plus rapide, puisque ça revient à tester si deux nombres sont égaux, plutôt
@@ -62,7 +62,7 @@ utlisant ces identifiants numériques.
 ```
 Positions  | 0                         | 1                         | 2                         |
 Personnes  | { nom = 5 ; prenom = 10 } | { nom = 4 ; prenom = 12 } | { nom = 3 ; prenom = 12 } |
-Traduction | { nom = "DUPO" ; ... }    | { nom = "DUPOND" ; ... } | { nom = "ZORG" ; ... } |
+Traduction | { nom = "DUPO" ; ... }    | { nom = "DUPOND" ; ... }  | { nom = "ZORG" ; ... }    |
 ```
 
 C'est pour cette raison, entre autres, qu'on ne peut pas simplement *décaler* le tableau
