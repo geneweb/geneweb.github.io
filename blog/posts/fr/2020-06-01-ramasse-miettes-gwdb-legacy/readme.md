@@ -13,21 +13,70 @@ l'écriture le seul utilisable par GeneWeb). J'ai nommé `gwdb-legacy`.
 
 ## Un peu de technique
 
+### Les chaînes de caractères (noms, prénoms, notes, ...)
+
+Lorsque l'on enregistre le nom d'une personne, ce qui va etre enregistré dans la
+personne, c'est en fait l'emplacement dans le tableau ou se situe la
+valeur (chaîne de caractères) que l'on vient de renseigner.
+
+Les chaînes de caractères est donc stockée dans un tableau à part. Cela permet
+de gagner espace de stockage car un même nom sera juste un même nombre, et la
+vraie valeur ne sera stockée qu'une fois. Cela permet aussi une comparaison
+beaucoup plus rapide, puisque ça revient à tester si deux nombres sont égaux, plutôt
+qu'à comparer deux textes.
+
+```
+Positions             | 0  | 1   | 2        | 3      |        4 |      5 |
+Chaînes de caractères | "" | "?" | "AZERTY" | "ZORG" | "DUPOND" | "DUPO" |
+```
+
+*Note : les valeurs 0 et 1 sont des valeurs spéciales, qui correspondent
+toujours à la chaine vide et au point d'interrogation.*
+
+Lors de la suppression/modification d'une chaîne de
+caractères, la chaîne de caractères remplaçante est insérée à la fin
+du tableau, et la référence du champs que l'on vient de modifier est
+mise à jour avec cette nouvelle position.
+
+Il est difficile de savoir si cette case n'était utilisée que par le
+champs que l'on vient de modifier. Si plusieurs personnes s'appellent
+DUPONT par exemple, et qu'on en modifie une pour mettre DUPOND,
+on ne peut pas supprimer "DUPONT" du tableaux puisque c'est toujours
+utilisé par d'autres personnes.
+
+Dans le cas ou ce texte n'est effectivement utilisé qu'à un endroit
+(par exemple pour les notes personnelles), on garde une information
+devenue inutile.
+
+Pire, on pourrait conserver des données *sensibles*, qui auraient du être supprimées.
+
 ### Les personnes et les familles
 
-Dans le moteur de stockage de GeneWeb, les personnes et les familles sont stockées dans des tableaux.
-
-Quand on supprime une personne, celle-ci n'est pas réellement
-supprimée, mais la case qui contenait les données de la ressource est tout simplement vidée.
+Les personnes et les familles sont stockées dans des tableaux également.
 
 Chaque personne possède un identifiant numérique, c'est le numéro qui correspond à la
 case mémoire ou sont enregistrés les informations de cette personnes. Ainsi, les
 ressources sont liées entre elles (liens de parenté, témoins aux évènements, ...) en
 utlisant ces identifiants numériques.
 
+```
+Positions  | 0                         | 1                         | 2                         |
+Personnes  | { nom = 5 ; prenom = 10 } | { nom = 4 ; prenom = 12 } | { nom = 3 ; prenom = 12 } |
+Traduction | { nom = "DUPO" ; ... }    | { nom = "DUPOND" ; ... } | { nom = "ZORG" ; ... } |
+```
+
 C'est pour cette raison, entre autres, qu'on ne peut pas simplement *décaler* le tableau
 pour écraser une case à supprimer, car on modifierait alors les identifiant numériques de toutes
 les cases suivantes.
+
+Quand on supprime une personne, celle-ci n'est pas réellement
+supprimée, mais la case qui contenait les données de la ressource est tout simplement vidée.
+
+```
+Positions  | 0                         | 1                            | 2                         |
+Personnes  | { nom = 5 ; prenom = 10 } | { nom = 1 ; prenom = 1 }     | { nom = 3 ; prenom = 12 } |
+Traduction | { nom = "DUPO" ; ... }    | { nom = "?" ; prenom = "?" } | { nom = "ZORG" ; ... }    |
+```
 
 On vide donc la case de toutes ses informations et on supprime les
 liens vers/depuis cette case dans la base.
@@ -53,35 +102,6 @@ impossible de recycler les familles supprimées.
 fantômes lors des nouvelles saisies, mais ce n'est pas le comportement
 actuel de GeneWeb*
 
-### Les chaînes de caractères (noms, prénoms, notes, ...)
-
-Lorsque l'on enregistre le nom d'une personne, ce qui va etre enregistré dans la
-personne, c'est en fait l'emplacement dans le tableau ou se situe la
-valeur (chaîne de caractères) que l'on vient de renseigner.
-
-Les chaînes de caractères est donc stockée dans un tableau à part. Cela permet
-de gagner espace de stockage car un même nom sera juste un même nombre, et la
-vraie valeur ne sera stockée qu'une fois. Cela permet aussi une comparaison
-beaucoup plus rapide, puisque ça revient à tester si deux nombres sont égaux, plutôt
-qu'à comparer deux textes.
-
-Lors de la suppression/modification d'une chaîne de
-caractères, la chaîne de caractères remplaçante est insérée à la fin
-du tableau, et la référence du champs que l'on vient de modifier est
-mise à jour avec cette nouvelle position.
-
-Il est difficile de savoir si cette case n'était utilisée que par le
-champs que l'on vient de modifier. Si plusieurs personnes s'appellent
-DUPONT par exemple, et qu'on en modifie une pour mettre DUPOND,
-on ne peut pas supprimer "DUPONT" du tableaux puisque c'est toujours
-utilisé par d'autres personnes.
-
-Dans le cas ou ce texte n'est effectivement utilisé qu'à un endroit
-(par exemple pour les notes personnelles), on garde une information
-devenue inutile.
-
-Pire, on pourrait conserver des données *sensibles*, qui auraient du être supprimées.
-
 ## Le nettoyage de la base
 
 Nous voyons donc, que tout cela est problématique. D'un point de vue
@@ -103,7 +123,7 @@ comme "à conserver", et on marque également les cases qu'elle références
 (par exemple le nom, le prénom, les parents, ...) comme "à conserver"
 également.
 
-À la fin du parcour, les cases qui ne sont pas marquées sont donc celles à supprimer.
+À la fin du parcours, les cases qui ne sont pas marquées sont donc celles à supprimer.
 
 Ensuite, on crée un nouvelle base, avec des tableaux de longueur
 `taille initiale - données à supprimer`, et on les remplis avec les
@@ -112,12 +132,12 @@ références.
 
 Exemple :
 ```
-                                         1        | 2      | 3        | 4      
-Tableau des noms avant ramasse-miettes [ "AZERTY" | "ZORG" | "DUPOND" | "DUPO" ]
-Tableau des noms après ramasse-miettes [ "DUPOND" | "DUPO" ]
+                                       | 0  | 1   | 2        | 3      | 4        | 5      |
+Tableau des noms avant ramasse-miettes | "" | "?" | "AZERTY" | "ZORG" | "DUPOND" | "DUPO" |
+Tableau des noms après ramasse-miettes | "" | "?" | "DUPOND" | "DUPO" |
 
-Personne avant ramasse miette  { nom = 3 ; prenom = ... }
-Personne après ramasse miette  { nom = 1 ; prenom = ... }
+Personne avant ramasse-miettes { nom = 4 ; prenom = ... }
+Personne après ramasse-miettes { nom = 2 ; prenom = ... }
 ```
 
 ## Et alors, ça donne quoi ?
