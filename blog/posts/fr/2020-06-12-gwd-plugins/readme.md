@@ -16,7 +16,7 @@ et on affiche le résultat, en utilisant le module `Wserver`.
 Par exemple, voici un *handler* qui récupère un paramêtre GET `n`,
 et qui l'utilise pour afficher un message d'accueil.
 
-```
+```ocaml
 let handler _self conf _base =
   Wserver.printf
     "<html>\
@@ -37,7 +37,7 @@ let handler _self conf _base =
 son plugin pour qu'il soit appelé lorsqu'une url avec le mode
 (paramètre `m`) correspondant est demandée.
 
-```
+```ocaml
 let () = Gwdlib.GwdPlugin.register "HELLO" handler
 ```
 
