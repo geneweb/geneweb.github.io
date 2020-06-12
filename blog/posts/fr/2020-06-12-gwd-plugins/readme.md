@@ -73,7 +73,7 @@ Ensuite, il suffit de lancer gwd comme ceci
 gwd.exe -bd bases/ -hd hd/ -plugin /path/to/hello.cmxs
 ```
 
-Et en se rendant sur l'url localhost:2317/base_w?m=HELLO&n=World
+Et en se rendant sur l'url http://localhost:2317/base_w?m=HELLO&n=World
 nous obtenons :
 
 ![Screenshot Hello, World!](img/screenshot.png)
