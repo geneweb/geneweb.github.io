@@ -43,8 +43,28 @@ let () = Gwdlib.GwdPlugin.register "HELLO" handler
 
 ## Compiler le plugin
 
-Pour pouvoir utiliser notre plugin, il faut fournir à
-gwd un fichier `.cmxs`.
+Le code complet de notre plugin est donc le suivant :
+
+```ocaml
+open Geneweb
+
+let handler _self conf _base =
+  Wserver.printf
+    "<html>\
+     <head>\
+     <title>Hello!</title>\
+     </head>\
+     <body>\
+     <h1>Hello, %s!</h1>\
+     <p>Hello from a gwd plugin.</p>\
+     </body>\
+     </html>"
+    (List.assoc "n" conf.Config.env)
+
+let () = Gwdlib.GwdPlugin.register "HELLO" handler
+```
+
+Pour pouvoir l'utiliser, il faut fournir à gwd un fichier `.cmxs`.
 
 En utilisant [dune](https://dune.build/), il suffit d'écire
 le fichier `dune` suivant.
@@ -77,3 +97,7 @@ Et en se rendant sur l'url http://localhost:2317/base_w?m=HELLO&n=World
 nous obtenons :
 
 ![Screenshot Hello, World!](img/screenshot.png)
+
+*Notes: la fonctionnalité est en cours de spécification, mais il est
+fort probable que gwd charge par defaut tous les plugins présents dans un
+dossier plugin.*
