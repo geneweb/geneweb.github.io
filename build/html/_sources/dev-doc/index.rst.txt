@@ -11,8 +11,6 @@ It describes:
 
 - A documentation of the main binaries;
 
-- A documentation for libraries generated with **odoc**.
-
 
 .. toctree::
    :maxdepth: 2
