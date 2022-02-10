@@ -18,7 +18,10 @@ view:
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-.PHONY: help Makefile all view
+gh-pages:
+	git subtree push --prefix build/html origin gh-pages
+
+.PHONY: help Makefile all view gh-pages
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
