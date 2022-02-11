@@ -2,7 +2,7 @@
 
 ## Documentation
 
-Imports a GEDCOM 5.5.1 file to a Geneweb base. GEDCOM is a popular format
+Imports a GEDCOM 5.5.1 file to a GeneWeb base. GEDCOM is a popular format
 among genealogy enthusiasts.
 [GEDCOM 5.5.1 documentation](http://www.ancestris.org/dl/ancestris/norme_gedcom/Gedcom_norm_551_2019_11_15.pdf)
 

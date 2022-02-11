@@ -30,7 +30,7 @@ usage: default/test/test.exe options*
   -runner {processes|sequential}
                                   Select a the method to run tests. (default: processes)
   -shards i                       Number of shards to use as worker (threads or processes). (default: 4)
-  -suite-name str                 The name of the test suite running. (default: Geneweb)
+  -suite-name str                 The name of the test suite running. (default: GeneWeb)
   -testdata-dir str               Location of the test data directory (absolute path). (default: none)
   -verbose {true|false}           Run test in verbose mode. (default: false)
   -only-test path                 Run only the selected tests.

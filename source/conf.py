@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Geneweb'
+project = 'GeneWeb'
 copyright = '2021-2022, OCamlPro'
 author = 'OCamlPro'
 

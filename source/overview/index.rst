@@ -2,13 +2,13 @@
 Overview
 ========
 
-How to start a Geneweb server
+How to start a GeneWeb server
 -----------------------------
 
 Starting the server
 ~~~~~~~~~~~~~~~~~~~
 
-Starting a Geneweb web server requires two tools:
+Starting a GeneWeb web server requires two tools:
 
 - :code:`gwd`, the actual web server;
 - :code:`setup`, the database setup portal.
@@ -33,13 +33,13 @@ This will start the setup server on port 2316.
 Configuration
 ~~~~~~~~~~~~~
 
-Geneweb can be configured by defining a `<base name>.gwb` file. An example is
+GeneWeb can be configured by defining a `<base name>.gwb` file. An example is
 available in the :code:`etc` directory.
 
-Architecture of Geneweb
+Architecture of GeneWeb
 -----------------------
 
-Geneweb is built from three main components:
+GeneWeb is built from three main components:
 
 - the storage of the genealogical trees, divided in a patch file and the actual data;
 - the libraries, reading the data from the storage and writing the patch file
@@ -62,7 +62,7 @@ Libraries
 - `Util`: a library with miscellaneous useful modules for manipulating
   base data types.
 
-- `Def`: the definition of the main type definitions used in Geneweb trees.
+- `Def`: the definition of the main type definitions used in GeneWeb trees.
 
 - `Sosa`: describes a Sosa-Stradonitz numbering (known an
   Ahnentafel numbering), associating natural identifiers to individuals. This
@@ -83,14 +83,14 @@ Libraries
   virtual, it currently has only one implementation, `gwdb-legacy`. It is wrapped
   by the `gwdb` library that exports many tools for database updates.
 
-- `Core`: core of Geneweb for calculating consanguinity between persons.
+- `Core`: core of GeneWeb for calculating consanguinity between persons.
 
-- `Geneweb_export` : provides a functor for defining Json convertors for Geneweb's
+- `GeneWeb_export` : provides a functor for defining Json convertors for GeneWeb's
   datatypes.
 
-- `Def_show`: defines formatters and `string` converters for Geneweb's datatypes.
+- `Def_show`: defines formatters and `string` converters for GeneWeb's datatypes.
 
-- `Geneweb`: the main library. It contains several kinds of files, from
+- `GeneWeb`: the main library. It contains several kinds of files, from
   utilitarian modules to HTML generation.
 
 - `Gwb2gedLib`: defines a function for exporting a base to a GEDCOM file.
@@ -111,25 +111,25 @@ Binaries
 Official binaries
 -----------------
 
-Here are the binaries maintained by Geneweb:
+Here are the binaries maintained by GeneWeb:
 
 - `Connex <../binaries/connex.html>`_: calculates connex components of a base;
 
 - `Consang <../binaries/consang.html>`_: calculates the consanguinity level of individuals;
 
-- `Ged2gwb <../binaries/ged2gwb.html>`_: imports a GEDCOM 5.5.1 file to a Geneweb base;
+- `Ged2gwb <../binaries/ged2gwb.html>`_: imports a GEDCOM 5.5.1 file to a GeneWeb base;
 
 - `Gwb2ged <../binaries/gwb2ged.html>`_: exports a base to a GEDCOM 5.5.1 base;
 
 - `Gwc <../binaries/gwc.html>`_: creates a new database;
 
-- `Gwd <../binaries/gwd.html>`_: starts Geneweb's main web server which allows to interact with bases;
+- `Gwd <../binaries/gwd.html>`_: starts GeneWeb's main web server which allows to interact with bases;
 
 - `Gwdiff <../binaries/gwdiff.html>`_: targets differences between two databases;
 
 - `Fixbase <../binaries/gwfixbase.html>`_: checks the consistency of a base and applies patches;
 
-- `Gwgc <../binaries/gwgc.html>`_: removes unused entries in Geneweb's arrays;
+- `Gwgc <../binaries/gwgc.html>`_: removes unused entries in GeneWeb's arrays;
 
 - `Gwrepl <../binaries/gwrepl.html>`_: an OCaml interactive top level, useful for scripts;
 

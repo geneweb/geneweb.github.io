@@ -2,7 +2,7 @@
 
 ## Documentation
 
-Exports the content of a Geneweb base to a .gw file.
+Exports the content of a GeneWeb base to a .gw file.
 
 ```
 Usage: geneweb.gwu <BASE> [OPT]

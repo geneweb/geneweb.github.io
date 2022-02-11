@@ -192,7 +192,7 @@ This file is used to mark the root of projects as well as define project-wide pa
 #### dune-workspace 
 
 This file is used to define different build contexts and to select a build profile.
-Geneweb defines only one `default` context. Build profile (`release` or `dev`) is chosen by configuration script (```--release``` option to use release profile) with subsequent ```make```.
+GeneWeb defines only one `default` context. Build profile (`release` or `dev`) is chosen by configuration script (```--release``` option to use release profile) with subsequent ```make```.
 
 #### dune 
 
@@ -214,7 +214,7 @@ This option tells to compiler to enable all the warnings except :
 - Open statement that shadows an already defined identifier.
 - Implicit elimination of optional arguments. 
 
-#### Geneweb library
+#### GeneWeb library
 
 ```lib/dune```
 
@@ -351,7 +351,7 @@ Defines public **geneweb.util** library (locally - **geneweb_util**)<!--TODO: sh
   - [uunf](https://docs.ocaml.pro/docs/META.uunf@uunf.13.0.0/index.html)
   - [uutf](https://docs.ocaml.pro/docs/META.uutf@uutf.1.0.2/index.html)
 
-##### Geneweb executables
+##### GeneWeb executables
 
 ```bin/connex/dune```
 
@@ -594,7 +594,7 @@ Defines public **geneweb.wserver** library (locally - **wserver**)<!--TODO: shor
 - Depends on extrenal libraries :
   - [unix](https://docs.ocaml.pro/docs/META.unix@ocamlfind.1.9.1/index.html)
 
-##### Geneweb plugins
+##### GeneWeb plugins
 
 ```plugins/cgl/dune```
 
@@ -784,7 +784,7 @@ Defines plugin **plugin_welcome**<!--TODO: short description-->.
   - wserver
   - plugin_v7_lib
 
-##### Geneweb tests
+##### GeneWeb tests
 
 ```test/dune```
 
@@ -807,7 +807,7 @@ Defines:
      - [stdlib-shims](https://docs.ocaml.pro/docs/META.stdlib-shims@stdlib-shims.0.3.0/index.html)
      - [oUnit](https://docs.ocaml.pro/docs/META.oUnit@ounit.2.0.8/index.html)
 
-##### Geneweb benchmarks
+##### GeneWeb benchmarks
 
 ```benchmark/dune```
 

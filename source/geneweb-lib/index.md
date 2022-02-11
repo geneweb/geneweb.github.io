@@ -1,4 +1,4 @@
-# Geneweb library overview
+# GeneWeb library overview
 
 ## Def lib
 
@@ -17,7 +17,7 @@ This module exposes base types and functions used by many other geneweb's librar
 ### Buff
 
 Module that defines extenisable buffer and auxilarry functions to store charcacters and strings and get buffer's content. The reason to define this module instead of using standard [Buffer](https://docs.ocaml.pro/docs/LIBRARY.stdlib@ocaml-base-compiler.4.10.0/Stdlib/Buffer/index.html) module is that its  
-storing functions are more simple to use as an argument to the recursive functions over strings that are very common throughout Geneweb library.
+storing functions are more simple to use as an argument to the recursive functions over strings that are very common throughout GeneWeb library.
 
 ### Name
 

@@ -2,7 +2,7 @@
 
 ## Gw files
 
-Genealogy database could be created by Geneweb from one or from multiple source files with *.gw* extension. Those files describe structurally persons, families all kinds of relationships, different events, etc. You can read more about the file structure [here](https://geneweb.tuxfamily.org/wiki/gw). Binary executable `gwc` reads files *.gw*, extracts all persons and families information and passes it to the **Gwdb** module in order to create the database.
+Genealogy database could be created by GeneWeb from one or from multiple source files with *.gw* extension. Those files describe structurally persons, families all kinds of relationships, different events, etc. You can read more about the file structure [here](https://geneweb.tuxfamily.org/wiki/gw). Binary executable `gwc` reads files *.gw*, extracts all persons and families information and passes it to the **Gwdb** module in order to create the database.
 
 ## Database entries
 
@@ -132,12 +132,12 @@ base. Every modification (patch) done is pended until patches are committed with
 Commit performs update of the `patches` file.
 
 Patching signifies only operations that add or modify an entry. Entry suppression is done quite differently.
-It is replaced by a *dummy* entry and then removed by Geneweb's garbage collector `gwgc` that performs compaction 
+It is replaced by a *dummy* entry and then removed by GeneWeb's garbage collector `gwgc` that performs compaction 
 of database arrays. Another useful `fixbase` tool, locates and fixes inconsistencies on the base and updates all database files.
 
 ## Example
 
-Here is an example how Geneweb displays birth dates of persons that have given name (let's say "Pierre") without considering caches:
+Here is an example how GeneWeb displays birth dates of persons that have given name (let's say "Pierre") without considering caches:
 
 - Firstly, it makes dichotomous search inside `fnames.inx` of a string id (`istr`) that references "Pierre"
 - Then it reads (with associated to "Pierre" offset from `fnames.inx`) position in the file `fnames.data` where list of ids of persons (`iper`) with first name "Pierre" are stored.

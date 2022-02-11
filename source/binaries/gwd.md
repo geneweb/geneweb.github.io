@@ -54,7 +54,7 @@ Util functions for logging errors & infos.
 Module used for registering plug-ins to Gwd.
 
 ### Request module
-The main interface between the Geneweb core and the rest of the world.
+The main interface between the GeneWeb core and the rest of the world.
 
 ### GedPluginDep module
 Calculates the load order of the different plugins.
@@ -200,7 +200,7 @@ a family is given by the `f` key and the individual is given by the `i` key).
 * Mode "MISC_NOTES_SEARCH": same as "MISC_NOTES", but with a search argument
   (key is `s`)
 
-* Mode "MOD_DATA": displays a menu for updating Geneweb's dictionary of names,
+* Mode "MOD_DATA": displays a menu for updating GeneWeb's dictionary of names,
 last names, locations, sources and professions.
 
 * Mode "MOD_DATA_OK": requests a data modification.
