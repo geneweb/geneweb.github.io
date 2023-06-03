@@ -1,3 +1,6 @@
+This document is mainly meant to be useful for new developpers, not users.
+Some part do quickly explain how geneweb works, so it may be useful for casual users, but it is not the main purpose of the document.
+(For geneweb users best documentation is the `geneweb wiki <https://geneweb.tuxfamily.org/wiki/GeneWeb>`_.)
 
 Overview
 ========
