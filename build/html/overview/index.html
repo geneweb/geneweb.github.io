@@ -1,18 +1,17 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Overview &#8212; GeneWeb 0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Database overview" href="database.html" />
@@ -34,11 +33,11 @@
           <div class="body" role="main">
             
   <section id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h1>
 <section id="how-to-start-a-geneweb-server">
-<h2>How to start a GeneWeb server<a class="headerlink" href="#how-to-start-a-geneweb-server" title="Permalink to this headline">¶</a></h2>
+<h2>How to start a GeneWeb server<a class="headerlink" href="#how-to-start-a-geneweb-server" title="Permalink to this heading">¶</a></h2>
 <section id="starting-the-server">
-<h3>Starting the server<a class="headerlink" href="#starting-the-server" title="Permalink to this headline">¶</a></h3>
+<h3>Starting the server<a class="headerlink" href="#starting-the-server" title="Permalink to this heading">¶</a></h3>
 <p>Starting a GeneWeb web server requires two tools:</p>
 <ul class="simple">
 <li><p><code class="code docutils literal notranslate"><span class="pre">gwd</span></code>, the actual web server;</p></li>
@@ -60,13 +59,13 @@ binaries.</p>
 <p>This will start the setup server on port 2316.</p>
 </section>
 <section id="configuration">
-<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h3>
 <p>GeneWeb can be configured by defining a <cite>&lt;base name&gt;.gwb</cite> file. An example is
 available in the <code class="code docutils literal notranslate"><span class="pre">etc</span></code> directory.</p>
 </section>
 </section>
 <section id="architecture-of-geneweb">
-<h2>Architecture of GeneWeb<a class="headerlink" href="#architecture-of-geneweb" title="Permalink to this headline">¶</a></h2>
+<h2>Architecture of GeneWeb<a class="headerlink" href="#architecture-of-geneweb" title="Permalink to this heading">¶</a></h2>
 <p>GeneWeb is built from three main components:</p>
 <ul class="simple">
 <li><p>the storage of the genealogical trees, divided in a patch file and the actual data;</p></li>
@@ -75,7 +74,7 @@ available in the <code class="code docutils literal notranslate"><span class="pr
 </ul>
 <img alt="../_images/diagram.png" src="../_images/diagram.png" />
 <section id="storage-architecture">
-<h3>Storage architecture<a class="headerlink" href="#storage-architecture" title="Permalink to this headline">¶</a></h3>
+<h3>Storage architecture<a class="headerlink" href="#storage-architecture" title="Permalink to this heading">¶</a></h3>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database overview</a><ul>
@@ -91,7 +90,7 @@ available in the <code class="code docutils literal notranslate"><span class="pr
 </section>
 </section>
 <section id="libraries">
-<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">¶</a></h2>
+<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this heading">¶</a></h2>
 <ul>
 <li><p><cite>Util</cite>: a library with miscellaneous useful modules for manipulating
 base data types.</p></li>
@@ -129,11 +128,11 @@ utilitarian modules to HTML generation.</p></li>
 <p>The documentation of each module is available on the automatically generated
 documentation of geneweb (<cite>$ make doc</cite>)</p>
 <section id="binaries">
-<h3>Binaries<a class="headerlink" href="#binaries" title="Permalink to this headline">¶</a></h3>
+<h3>Binaries<a class="headerlink" href="#binaries" title="Permalink to this heading">¶</a></h3>
 </section>
 </section>
 <section id="official-binaries">
-<h2>Official binaries<a class="headerlink" href="#official-binaries" title="Permalink to this headline">¶</a></h2>
+<h2>Official binaries<a class="headerlink" href="#official-binaries" title="Permalink to this heading">¶</a></h2>
 <p>Here are the binaries maintained by GeneWeb:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="../binaries/connex.html">Connex</a>: calculates connex components of a base;</p></li>
@@ -157,7 +156,7 @@ documentation of geneweb (<cite>$ make doc</cite>)</p>
 </div>
 </section>
 <section id="web-server-and-plug-ins">
-<h2>Web-server and plug-ins<a class="headerlink" href="#web-server-and-plug-ins" title="Permalink to this headline">¶</a></h2>
+<h2>Web-server and plug-ins<a class="headerlink" href="#web-server-and-plug-ins" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="code docutils literal notranslate"><span class="pre">gwd</span></code> web server is customizable with plug-ins; code replacing
 the original behaviour of the web server handling requests. They are
 dynamically loaded by <code class="code docutils literal notranslate"><span class="pre">gwd</span></code> at its start and each base can be activated
@@ -226,7 +225,7 @@ check there are no circular dependencies between plug-ins.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -243,7 +242,7 @@ check there are no circular dependencies between plug-ins.</p>
       &copy;2021-2022, OCamlPro.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.2.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
