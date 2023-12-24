@@ -33,7 +33,7 @@ This will start the setup server on port 2316.
 Configuration
 ~~~~~~~~~~~~~
 
-GeneWeb can be configured by defining a `<base name>.gwb` file. An example is
+GeneWeb can be configured by defining a `<base name>.gwf` file. An example is
 available in the :code:`etc` directory.
 
 Architecture of GeneWeb
@@ -149,7 +149,7 @@ Web-server and plug-ins
 The :code:`gwd` web server is customizable with plug-ins; code replacing
 the original behaviour of the web server handling requests. They are
 dynamically loaded by :code:`gwd` at its start and each base can be activated
-through the :code:`.gwb` file (:code:`plugins=*` for activating all plug-ins,
+through the :code:`.gwf` file (:code:`plugins=*` for activating all plug-ins,
 otherwise :code:`plugins=p1,p2,...`).
 
 A plug-in is composed of its code, a :code:`dune` file for building and a
